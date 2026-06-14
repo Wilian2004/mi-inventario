@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
 
-# Configuración de la página
 st.set_page_config(page_title="Gestión de Inventario", layout="wide")
 
-# Inicializar datos en la sesión (para que no se borren al tocar botones)
 if 'catalogo' not in st.session_state:
     st.session_state.catalogo = {
         "Arroz": {"costo": 2, "precio_venta": 4, "vencimiento": "18122026", "stock": 20, "tipo": "kilos", "ventas": {"05-2026": 20}},
@@ -16,7 +14,6 @@ st.title("📦 Sistema de Gestión Profesional")
 menu = st.sidebar.selectbox("Seleccione una opción", 
     ["Inventario", "Agregar Producto", "Actualizar Stock/Ventas", "Reporte Mensual", "Sugerencias"])
 
-# --- VISTAS ---
 
 if menu == "Inventario":
     st.header("📋 Inventario Detallado")
@@ -81,16 +78,6 @@ elif menu == "Sugerencias":
     for n, p in ranking:
         st.write(f"**{n}** - Stock actual: {p['stock']} | Margen: ${p['precio_venta']-p['costo']}")
 
-### Paso 2: Crear el archivo de dependencias
-Crea un archivo llamado `requirements.txt` y escribe solo esto dentro:
-```text
-streamlit
-pandas
 
-### Paso 3: Subir a GitHub y Desplegar
-1. Sube ambos archivos (`app.py` y `requirements.txt`) a un nuevo repositorio en tu GitHub.
-2. Ve a [Streamlit Cloud](https://share.streamlit.io/), loguéate con GitHub.
-3. Dale a **"New App"**, busca tu repositorio y el archivo `app.py`.
-4. Dale a **"Deploy"** y espera 2 minutos.
 
-¡Tu sistema de inventario ya tiene su propio enlace web! ¿Quieres que te ayude con el proceso de GitHub si nunca lo has hecho?
+
